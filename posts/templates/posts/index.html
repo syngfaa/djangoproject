@@ -1,0 +1,23 @@
+{% extends 'posts/layout.html' %}
+
+{% block content %}
+<h3 class="center-align">{{title}}</h3>
+<a class="button" href="../">Klik hier om terug te gaan naar de homepagina</a>
+    {% for post in posts reversed%}
+    {% if post.created_by_id == 1 %}
+    <ul class="collapsible">
+            <li>
+            <div {% if forloop.first %} class="active center-align collapsible-header"{% endif %} class="center-align collapsible-header"><h5>{{post.title}}</h5></div>
+            <div class="collapsible-body">{{post.body|linebreaks}}</div>
+            </li>
+            <li>
+            <div class="row red lighten-5">
+            <div class=" col s4 push-s2 center-align">Geplaatst op:</div>
+            <div class=" col s6 center-align">{{post.created_at}}</div>
+            </div>
+            </li>
+    </ul>
+    {% endif %}
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends 'posts/layout.html' %}
+{% load static %}
+
+{% block content %}  
+<h3 class="center-align">{{title}}</h3>
+    <p class="center-align"><a class="button" href="posts/">Klik hier voor een overzicht van werkzaamheden</a></p>
+<div class="background-color green lighten-2">
+    <br>
+    <p class="center-align">Onderstaande knop verzend een xAPI statement naar een LRS. 
+    </br>Hierbij wordt gebruik gemaakt van de gratis versie van SCRORM CLOUD</p>
+    <p class="center-align"> <button type="button" id="xapiStatementButton">Test 1</button></p>
+    <br>
+</div>
+
+
+    <!-- <p> <button type="button" id="hideStatements">verberg statements</button></p> -->
+    <div class="background-color blue lighten-2" align="center">
+        <p>Op dit moment worden er xAPI statements verstuurd wanneer de video gestart is en als er weer gepauzeerd wordt.</p>
+            <video id="mediaPlayer" width="720" controls>  
+                <source src="{% static "assets/js/BigBuckBunny_320x180.mp4"%}" type="video/mp4">  
+                Your browser does not support HTML5 video.  
+            </video>  
+            <br>
+    </div>  
+<br>
+    <div class="background-color green lighten-2">
+            <input class="center-align" id="sindsDatum" type="datetime-local">
+            <p class="center-align" > <button type="button" id="showStatements">Haal video statements uit LRS vanaf gekozen datum en tijd</button> <div id="sindsDatum"></div> </p>
+            <br>
+            <!-- <p>lijst van statements gehaald uit LRS:</p> -->
+            <div id="results"> </div>
+            <br>
+        </div>
+        
+    <!-- <p>lijst van statements gehaald uit LRS:</p>
+    <div id="results"> </div> -->
+
+    <!-- <div id="content">
+        <p>lijst van statements gehaald uit LRS:</p>
+        <p id="count"></p>
+        <p id="verbs"></p>
+    </div> -->
+    
+{% endblock %}
