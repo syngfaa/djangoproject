@@ -24,8 +24,9 @@ $(document).ready(function () {
     // this sets up the Variable "Vid" to point to the video player  
     // so we can interact with it.  
 
-    // When the user hits Play...  
+    // When the user hits Play... 
     vid.onplay = function () {
+        console.log("onplay event");
         playFrom = (vid.currentTime).toFixed(2);
     }; // End onPlay()
 

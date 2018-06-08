@@ -26,6 +26,7 @@ $(document).ready(function () {
 
     // When the user hits Play...  
     vid.onplay = function () {
+        console.log("onplay event");
         playFrom = (vid.currentTime).toFixed(2);
     }; // End onPlay()
 
