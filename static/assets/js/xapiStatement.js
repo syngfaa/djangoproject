@@ -24,7 +24,7 @@ $(document).ready(function () {
     // this sets up the Variable "Vid" to point to the video player  
     // so we can interact with it.  
 
-    // When the user hits Play...  
+    // When the user hits Play... 
     vid.onplay = function () {
         console.log("onplay event");
         playFrom = (vid.currentTime).toFixed(2);
@@ -199,13 +199,23 @@ function get_statements() {
     };
     ADL.XAPIWrapper.changeConfig(conf);
 
+    // Set the query parameters  
     var myparams = ADL.XAPIWrapper.searchParams();
+    //twee uur eraf halen omdat in het LRS in andere tijd word aangegeven
+   // d.setHours(d.getHours() - 2);
     myparams.since = d.toISOString();
     myparams.verb = 'https://w3id.org/xapi/video/verbs/paused';
     myparams.activity = 'http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4';
     myparams.agent = '{"mbox": "mailto:syngfaa@gmail.com"}';
+    //      ** NOTE: For agent search, it must send as an object.  You MUST include the   
+    //      **  outer single quotes!!!  
+    //      **********  
+    // End of query paramaters  
+
+    //send the query  
     var ret = ADL.XAPIWrapper.getStatements(myparams);
 
+    //process and display results  
     var txt = " ";
     if (ret) {
         for (i = 0; i < ret.statements.length; i++) {
@@ -224,7 +234,11 @@ function get_statements() {
         }
         document.getElementById("results").innerHTML = txt;
 
+        // console debug statements  
         console.log(txt);
+        //console.log(ret.statements);
+       // console.log(ret.statements.length);
+       // console.log(ret.statements[0].actor.mbox);
     }
 }
 
